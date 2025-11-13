@@ -7,8 +7,9 @@ const ola_mundo = function(req, res){ // passando como parametro a requisição 
     res.send('Olá Mundo!');  // exibindo a mensagem 
 }
 
-app.get('/', ola_mundo); // pegando a mensagem para ser exibida
+app.get('/', ola_mundo); // pegando a mensagem através da função ola_mundo para ser exibido
 
 app.listen(porta, () => {
     console.log("Servidor rodando no endereço http://127.0.0.1:3000\n"); // conectando no servidor!
 });
+

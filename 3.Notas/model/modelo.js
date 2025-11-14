@@ -1,5 +1,5 @@
 // Neste arquivo serão definios todos os modelos de dados da aplicação
-class nota {
+class Nota {
     constructor(chave, titulo, texto) {
         this.chave = chave;
         this.titulo = titulo;

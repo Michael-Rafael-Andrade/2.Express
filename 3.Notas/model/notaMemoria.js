@@ -1,5 +1,5 @@
 // importação da classe no arquivo "modelo.js"
-var Nota = require("./modelo.js");
+var Nota = require("./modelos.js");
 
 const lista_notas = [] // será um vetor de objetos do tipo Nota
 
@@ -19,11 +19,11 @@ class NotaMemoria {
     }
     async deleta(chave){
         if(lista_notas[chave]){
-            delete lista_notas[chaves];
-        } else throw new Error(`Nota com chave ${chave} não existe`);
+            delete lista_notas[chave];
+        } else throw new Error(`Nota com a chave ${chave} não existe`);
     }
     async lista(){
-        return Object.values(this.lista_notas);
+        return Object.values(lista_notas);
     }
 }
 

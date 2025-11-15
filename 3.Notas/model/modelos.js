@@ -14,6 +14,11 @@ class Nota {
     get texto(){
         return this.texto;
     }
+    // Acrescentado por conta própria
+    set chave(novaChave){
+        this.chave = novaChave;
+    }
+    // fim
     set titulo(novoTitulo){
         this.titulo = novoTitulo;
     }

@@ -9,4 +9,10 @@ router.get('/cria', controllerNota.cria_get);
 router.post('/cria', controllerNota.cria_post);
 // fim da linha opcional
 
+// GET consulta Nota 
+router.get('/consulta/:chave_nota', controllerNota.consulta);
+
+// Informação passada como parâmetro na url
+var chave = requestAnimationFrame.params.chave_nota
+
 module.exports = router;

@@ -42,3 +42,19 @@ exports.cria_post = async function (req, res) {
 }
 
 // fim adicionado opcional
+
+exports.consulta = async function(req, res){
+    // informação passada como parametro na url
+    var chave = req.params.chave_nota;
+    var nota = await notas.consulta(chave);
+
+    contexto = {
+        titulo_pagina: "Consulta a Nota",
+        chave: nota.chave,
+        titulo: nota.titulo,
+        texto: nota.text,
+    }
+
+    // renderiza o arquivo dentro da pasta view
+    res.render('consultaNota', contexto);
+}

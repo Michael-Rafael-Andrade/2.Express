@@ -1,5 +1,5 @@
 // importação da classe no arquivo "modelo.js"
-var Nota = require("./modelos.js");
+var Nota = require("./modelo.js");
 
 const lista_notas = [] // será um vetor de objetos do tipo Nota
 

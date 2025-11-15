@@ -1,29 +1,27 @@
 // Neste arquivo serão definios todos os modelos de dados da aplicação
 class Nota {
-    constructor(chave, titulo, texto) {
-        this.chave = chave;
-        this.titulo = titulo;
-        this.texto = texto;
+    constructor(_chave, _titulo, _texto) {
+        this.chave = _chave;
+        this.titulo = _titulo;
+        this.texto = _texto;
     }
     get chave() {
-        return this.chave;
+        return this._chave;
     }
     get titulo(){
-        return this.titulo;
+        return this._titulo;
     }
     get texto(){
-        return this.texto;
+        return this._texto;
     }
-    // Acrescentado por conta própria
     set chave(novaChave){
-        this.chave = novaChave;
+        this._chave = novaChave;
     }
-    // fim
     set titulo(novoTitulo){
-        this.titulo = novoTitulo;
+        this._titulo = novoTitulo;
     }
     set texto(novoTexto){
-        this.texto = novoTexto;
+        this._texto = novoTexto;
     }
 }
 

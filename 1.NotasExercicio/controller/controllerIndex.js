@@ -5,7 +5,7 @@ const notas = require('../model/notaMemoria.js');
 // cria e já exporta a função que será responsável pela tela principal
 exports.tela_principal = async function(req, res){
     // nota criada para teste
-    await notas.cria('nota_1', "Olá Mundo, Notas", "Esta é uma nota para testar as funcionalidades da aplicação de notas."); // passando como parametro (chave, titulo, texto);
+    // await notas.cria('nota_1', "Olá Mundo, Notas", "Esta é uma nota para testar as funcionalidades da aplicação de notas."); // passando como parametro (chave, titulo, texto);
 
     contexto = {
         titulo_pagina: "Gerenciador de Notas de Texto",

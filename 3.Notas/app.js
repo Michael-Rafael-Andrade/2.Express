@@ -6,10 +6,9 @@ var logger = require('morgan');
 
 // var indexRouter = require('./routes/index');
 var rotasIndex = require('./routes/rotasIndex');
+var rotasNota = require('./routes/rotasNota');
 
 var app = express();
-
-var rotasNota = require('./routes/rotasNota');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

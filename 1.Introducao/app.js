@@ -1,15 +1,44 @@
-import express from 'express'; // importar o express
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-const app = new express();  // Cria o objeto app recebendo um novo express
-const porta = 3000;
+// var indexRouter = require('./routes/index');
+var rotasIndex = require('./routes/rotasIndex');
+var rotasNota = require('./routes/rotasNota');
 
-const ola_mundo = function(req, res){ // passando como parametro a requisição e a resposta
-    res.send('Olá Mundo!');  // exibindo a mensagem 
-}
+var app = express();
 
-app.get('/', ola_mundo); // pegando a mensagem através da função ola_mundo para ser exibido
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
-app.listen(porta, () => {
-    console.log("Servidor rodando no endereço http://127.0.0.1:3000\n"); // conectando no servidor!
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', rotasIndex);
+app.use('/nota', rotasNota);
+
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;

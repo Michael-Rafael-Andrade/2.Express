@@ -10,7 +10,7 @@ Nota.init( // construtor com a definição dos atributos
         titulo: { type: DataTypes.STRING, unique: true, allowNull: false },
         texto: { type: DataTypes.TEXT, allowNull: false },
         importancia: { type: DataTypes.INTEGER, allowNull: false },
-        lida: { type: DataTypes.BOOLEAN, defaultValue: false },
+        // lida: { type: DataTypes.BOOLEAN, defaultValue: false },
     },
     {   // configurações adicionais do modelo
         sequelize, // para estabelecer conexão com BD
@@ -19,5 +19,12 @@ Nota.init( // construtor com a definição dos atributos
         updatedAt: 'atualiza_em', // nome do atributo 'updatedAt'
     },
 );
+
+// incluir linha de código para trabalhar de forma syncrono (sincrono)
+sequelize.sync({ alter: true }).then(() => { // alter: true, para aplicar alterações de código no BD
+    console.log('Modelos sincronizados com o banco de dados.');
+}).catch((error) => {
+    console.log('Erro ao sincronizar modelos com o banco de dados: ', error);
+});
 
 module.exports = Nota;

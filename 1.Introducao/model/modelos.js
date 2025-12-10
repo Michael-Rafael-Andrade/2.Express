@@ -1,28 +1,23 @@
-// Neste arquivo serão definios todos os modelos de dados da aplicação
-class Nota {
-    constructor(_chave, _titulo, _texto) {
-        this.chave = _chave;
-        this.titulo = _titulo;
-        this.texto = _texto;
-    }
-    get chave() {
-        return this._chave;
-    }
-    get titulo(){
-        return this._titulo;
-    }
-    get texto(){
-        return this._texto;
-    }
-    set chave(novaChave){
-        this._chave = novaChave;
-    }
-    set titulo(novoTitulo){
-        this._titulo = novoTitulo;
-    }
-    set texto(novoTexto){
-        this._texto = novoTexto;
-    }
-}
+const {DataTypes, Model} = require('sequelize');
+const sequelize = require('./server.js');
 
-module.exports = Nota
+class Nota extends Model { } // classe herdando de 'Model'
+
+Nota.init( // construtor com a definição dos atributos 
+    {
+        // substituindo o atributo 'chave'
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
+        titulo: { type: DataTypes.STRING, unique: true, allowNull: false },
+        texto: { type: DataTypes.TEXT, allowNull: false },
+        importancia: { type: DataTypes.INTEGER, allowNull: false },
+        lida: { type: DataTypes.BOOLEAN, defaultValue: false },
+    },
+    {   // configurações adicionais do modelo
+        sequelize, // para estabelecer conexão com BD
+        freezeTableName: true, // nome da tabela igual ao nome da classe
+        createdAt: 'criada_em', // nome do atributo 'createdAt'
+        updatedAt: 'atualiza_em', // nome do atributo 'updatedAt'
+    },
+);
+
+module.exports = Nota;
